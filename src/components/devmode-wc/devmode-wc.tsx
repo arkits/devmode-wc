@@ -9,7 +9,7 @@ export class DevmodeWc {
   @State() isToggled: boolean = false;
   @State() shouldDisplay: boolean = false;
   
-  @Prop() allowedOrigin?: string;
+  @Prop() allowedOrigins?: string;
   
   @Event() pillToggled: EventEmitter<boolean>;
 
@@ -17,16 +17,17 @@ export class DevmodeWc {
     this.updateVisibility();
   }
 
-  @Watch('allowedOrigin')
+  @Watch('allowedOrigins')
   updateVisibility() {
-    if (!this.allowedOrigin) {
-      // If no origin specified, show everywhere
+    if (!this.allowedOrigins) {
+      // If no origins specified, show everywhere
       this.shouldDisplay = true;
       return;
     }
     
     const currentOrigin = window.location.origin;
-    this.shouldDisplay = currentOrigin === this.allowedOrigin;
+    const allowedOriginsList = this.allowedOrigins.split(',').map(origin => origin.trim());
+    this.shouldDisplay = allowedOriginsList.includes(currentOrigin);
   }
 
   private handleToggle = () => {

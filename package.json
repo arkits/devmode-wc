@@ -1,6 +1,6 @@
 {
   "name": "devmode-wc",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A floating dev mode toggle web component",
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
@@ -48,14 +48,15 @@
     "toggle",
     "development"
   ],
-  "author": "Your Name",
+  "author": "Archit Khode",
   "license": "MIT",
   "devDependencies": {
+    "@changesets/cli": "^2.29.2",
     "@stencil/core": "^4.0.0",
     "@types/jest": "^27.5.2",
     "@types/node": "^16.18.11",
+    "gh-pages": "^6.3.0",
     "jest": "^27.5.1",
-    "jest-cli": "^27.5.1",
-    "puppeteer": "^21.0.0"
+    "jest-cli": "^27.5.1"
   }
 }

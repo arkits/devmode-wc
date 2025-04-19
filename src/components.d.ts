@@ -7,7 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface DevmodeWc {
-        "allowedOrigin"?: string;
+        "allowedOrigins"?: string;
     }
 }
 export interface DevmodeWcCustomEvent<T> extends CustomEvent<T> {
@@ -38,7 +38,7 @@ declare global {
 }
 declare namespace LocalJSX {
     interface DevmodeWc {
-        "allowedOrigin"?: string;
+        "allowedOrigins"?: string;
         "onPillToggled"?: (event: DevmodeWcCustomEvent<boolean>) => void;
     }
     interface IntrinsicElements {

@@ -7,9 +7,9 @@
 
 ## Properties
 
-| Property        | Attribute        | Description | Type     | Default     |
-| --------------- | ---------------- | ----------- | -------- | ----------- |
-| `allowedOrigin` | `allowed-origin` |             | `string` | `undefined` |
+| Property         | Attribute         | Description | Type     | Default     |
+| ---------------- | ----------------- | ----------- | -------- | ----------- |
+| `allowedOrigins` | `allowed-origins` |             | `string` | `undefined` |
 
 
 ## Events
