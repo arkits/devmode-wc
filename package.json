@@ -27,7 +27,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/devmode-wc.git"
+    "url": "https://github.com/arkits/devmode-wc.git"
   },
   "files": [
     "dist/",
