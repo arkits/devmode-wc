@@ -3,17 +3,154 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-    <title>DevMode Web Component</title>
+    <title>DevMode Web Component - Demo & Documentation</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
     <script type="module" src="/build/devmode-wc.esm.js"></script>
     <script nomodule src="/build/devmode-wc.js"></script>
+
+    <style>
+      :root {
+        --primary-color: #2563eb;
+        --text-color: #1f2937;
+        --bg-color: #ffffff;
+        --code-bg: #f3f4f6;
+      }
+
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        line-height: 1.6;
+        color: var(--text-color);
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem;
+        background: var(--bg-color);
+      }
+
+      h1, h2, h3 {
+        font-weight: 600;
+        line-height: 1.3;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: var(--primary-color);
+      }
+
+      .subtitle {
+        font-size: 1.25rem;
+        color: #4b5563;
+        margin-bottom: 3rem;
+      }
+
+      .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin: 3rem 0;
+      }
+
+      .feature {
+        padding: 1.5rem;
+        border-radius: 12px;
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+      }
+
+      .feature h3 {
+        margin-top: 0;
+        color: var(--primary-color);
+      }
+
+      code {
+        background: var(--code-bg);
+        padding: 0.2em 0.4em;
+        border-radius: 4px;
+        font-size: 0.9em;
+      }
+
+      pre {
+        background: var(--code-bg);
+        padding: 1rem;
+        border-radius: 8px;
+        overflow-x: auto;
+      }
+
+      .installation {
+        margin: 3rem 0;
+      }
+
+      .usage-example {
+        margin: 3rem 0;
+      }
+
+      .demo-section {
+        margin: 3rem 0;
+        padding: 2rem;
+        background: #f8fafc;
+        border-radius: 12px;
+        text-align: center;
+      }
+
+      .github-link {
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        background: var(--primary-color);
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+        font-weight: 500;
+        margin-top: 2rem;
+      }
+
+      .github-link:hover {
+        background: #1d4ed8;
+      }
+    </style>
   </head>
   <body>
-    <!-- Example: Only show on localhost:3000 -->
-    <devmode-wc allowed-origin="http://localhost:3000"></devmode-wc>
+    <h1>DevMode Web Component</h1>
+    <p class="subtitle">A sleek, floating dev mode toggle built with StencilJS</p>
+
+    <div class="features">
+      <div class="feature">
+        <h3>🎯 Minimal Design</h3>
+        <p>Floating pill design that stays out of the way while remaining easily accessible.</p>
+      </div>
+      <div class="feature">
+        <h3>🔒 Origin Control</h3>
+        <p>Show the toggle only on specific origins for better development control.</p>
+      </div>
+      <div class="feature">
+        <h3>💫 Modern UX</h3>
+        <p>Smooth animations and transitions with a clean, modern interface.</p>
+      </div>
+    </div>
+
+    <div class="installation">
+      <h2>Installation</h2>
+      <pre><code>npm install devmode-wc</code></pre>
+    </div>
+
+    <div class="usage-example">
+      <h2>Basic Usage</h2>
+      <pre><code>&lt;!-- Add to your HTML -->
+&lt;script type="module" src="node_modules/devmode-wc/dist/devmode-wc/devmode-wc.esm.js">&lt;/script>
+
+&lt;!-- Use the component -->
+&lt;devmode-wc>&lt;/devmode-wc></code></pre>
+    </div>
+
+    <div class="demo-section">
+      <h2>Live Demo</h2>
+      <p>Look for the floating pill in the bottom-left corner of this page!</p>
+      <devmode-wc></devmode-wc>
+    </div>
+
+    <a href="https://github.com/arkits/devmode-wc" class="github-link">View on GitHub</a>
   </body>
 </html>
