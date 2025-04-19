@@ -9,8 +9,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-    <script type="module" src="/build/devmode-wc.esm.js"></script>
-    <script nomodule src="/build/devmode-wc.js"></script>
+    <!-- Import from unpkg CDN -->
+    <script type="module" src="https://unpkg.com/devmode-wc/dist/devmode-wc/devmode-wc.esm.js"></script>
 
     <style>
       :root {
@@ -96,6 +96,20 @@
         text-align: center;
       }
 
+      .demo-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .demo-card {
+        padding: 1.5rem;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        background: white;
+      }
+
       .github-link {
         display: inline-block;
         padding: 0.75rem 1.5rem;
@@ -110,7 +124,34 @@
       .github-link:hover {
         background: #1d4ed8;
       }
+
+      #toggle-status {
+        margin-top: 1rem;
+        font-weight: 500;
+        color: var(--primary-color);
+      }
+
+      .origin-list {
+        margin-top: 1rem;
+        font-size: 0.9em;
+        color: #64748b;
+      }
     </style>
+
+    <script>
+      // Add event listener after DOM is loaded
+      document.addEventListener('DOMContentLoaded', () => {
+        const statusElement = document.getElementById('toggle-status');
+        const devModeComponent = document.querySelector('devmode-wc');
+
+        // Listen for toggle events
+        devModeComponent.addEventListener('pillToggled', (event) => {
+          const status = event.detail ? 'ON' : 'OFF';
+          statusElement.textContent = `Dev Mode Status: ${status}`;
+          console.log('Dev Mode toggled:', status);
+        });
+      });
+    </script>
   </head>
   <body>
     <h1>DevMode Web Component</h1>
@@ -138,17 +179,47 @@
 
     <div class="usage-example">
       <h2>Basic Usage</h2>
-      <pre><code>&lt;!-- Add to your HTML -->
-&lt;script type="module" src="node_modules/devmode-wc/dist/devmode-wc/devmode-wc.esm.js">&lt;/script>
+      <pre><code>&lt;!-- Using from CDN -->
+&lt;script type="module" src="https://unpkg.com/devmode-wc/dist/devmode-wc/devmode-wc.esm.js">&lt;/script>
 
-&lt;!-- Use the component -->
-&lt;devmode-wc>&lt;/devmode-wc></code></pre>
+&lt;!-- Basic usage -->
+&lt;devmode-wc>&lt;/devmode-wc>
+
+&lt;!-- With single origin -->
+&lt;devmode-wc allowed-origins="http://localhost:3000">&lt;/devmode-wc>
+
+&lt;!-- With multiple origins -->
+&lt;devmode-wc allowed-origins="http://localhost:3000, https://arkits.github.io">&lt;/devmode-wc>
+
+&lt;!-- With event listener -->
+&lt;devmode-wc onPillToggled="(e) => console.log(e.detail)">&lt;/devmode-wc></code></pre>
     </div>
 
     <div class="demo-section">
       <h2>Live Demo</h2>
       <p>Look for the floating pill in the bottom-left corner of this page!</p>
-      <devmode-wc></devmode-wc>
+      
+      <div class="demo-grid">
+        <div class="demo-card">
+          <h3>Basic Demo</h3>
+          <p>Default configuration with event logging</p>
+          <devmode-wc></devmode-wc>
+          <div id="toggle-status">Dev Mode Status: OFF</div>
+        </div>
+        
+        <div class="demo-card">
+          <h3>Multi-Origin Demo</h3>
+          <p>Only visible on specified origins</p>
+          <devmode-wc allowed-origins="http://localhost:3000, https://arkits.github.io"></devmode-wc>
+          <div class="origin-list">
+            Allowed Origins:
+            <ul>
+              <li>http://localhost:3000</li>
+              <li>https://arkits.github.io</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
 
     <a href="https://github.com/arkits/devmode-wc" class="github-link">View on GitHub</a>
